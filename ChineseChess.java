@@ -1,5 +1,9 @@
 package chinesechess;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 public class ChineseChess {
 
     int[][] chessBoard = new int[9][10];
@@ -98,7 +102,7 @@ public class ChineseChess {
             fw.flush();
             fw.close();
 
-        } catch (IOException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println("Error" + ex);
         }
     }
