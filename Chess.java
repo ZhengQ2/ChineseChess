@@ -5,10 +5,6 @@
  */
 package chinesechess;
 
-/**
- *
- * @author Zheng Qiu
- */
 public abstract class Chess {
     protected int xPos;
     protected int yPos;
