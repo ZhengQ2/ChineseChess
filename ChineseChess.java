@@ -36,9 +36,11 @@ public class ChineseChess {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
+                countDown();
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
+                countDown(); 
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
