@@ -8,8 +8,11 @@ package chinesechess;
 public abstract class Chess {
     protected int xPos;
     protected int yPos;
-    public Chess (int xPos, int yPos) {
+    protected boolean red;
+    
+    public Chess (int xPos, int yPos, boolean red) {
         this.xPos = xPos;
         this.yPos = yPos;
+        this.red = red;
     }
 }
