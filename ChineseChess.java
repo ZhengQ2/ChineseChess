@@ -83,15 +83,15 @@ public class ChineseChess {
         File file;
         try {
             if (saveNum == 1) {
-                file = new File("src//load//save1.txt");
+                file = new File("src//chinesechess//save1.txt");
             } else if (saveNum == 2) {
-                file = new File("src//load//save1.txt");
+                file = new File("src//chinesechess//save1.txt");
             } else if (saveNum == 3) {
-                file = new File("src//load//save3.txt");
+                file = new File("src//chinesechess//save3.txt");
             } else if (saveNum == 4) {
-                file = new File("src//load//save4.txt");
+                file = new File("src//chinesechess//save4.txt");
             } else {
-                file = new File("src//load//save5.txt");
+                file = new File("src//chinesechess//save5.txt");
             }
             PrintWriter fw = new PrintWriter(file);
             fw.write(gameChess);
