@@ -11,20 +11,20 @@ public class ChineseChess {
     }
 
     public void pushButtons(int chessRule, boolean red, int chessNum, int xPosMove, int yPosMove) {
+        //Chess Rule:
+        //1 - Pawns; 2 - Elephants; 3 - Horses; 4 - Rooks; 5 - Canons; 6 - guards; 7 - kings
         boolean move;
         int oriXPos, oriYPos;
 
         if (red) {
             oriXPos = redChess[chessNum].getXPos();
             oriYPos = redChess[chessNum].getYPos();
-
-            move = redChess[chessNum].move(xPosMove, yPosMove);
         } else {
             oriXPos = blackChess[chessNum].getXPos();
             oriYPos = blackChess[chessNum].getYPos();
-
-            move = blackChess[chessNum].move(xPosMove, yPosMove);
         }
+
+        move = move(red, chessRule, xPosMove, yPosMove, chessNum);
 
         int newXPos, newYPos;
 
@@ -47,6 +47,30 @@ public class ChineseChess {
 
         }
 
+    }
+
+    public boolean move(boolean red, int chessRule, int xPosMove, int yPosMove, int chessNum) {
+        boolean returnVal;
+        if (chessRule == 3) {
+            boolean canMove = checkHorseMove();
+            if (red) {
+                returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
+            } else {
+                returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
+            }
+        } else {
+            if (red) {
+                returnVal = redChess[chessNum].move(xPosMove, yPosMove);
+            } else {
+                returnVal = redChess[chessNum].move(xPosMove, yPosMove);
+            }
+
+        }
+        return returnVal;
+    }
+
+    public boolean checkHorseMove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
