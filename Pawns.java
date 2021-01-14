@@ -5,10 +5,6 @@
  */
 package chinesechess;
 
-/**
- *
- * @author Zheng Qiu
- */
 public class Pawns extends Chess {
 
     boolean riverSide;
