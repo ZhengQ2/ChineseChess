@@ -89,7 +89,7 @@ public class ChineseChess {
             if (saveNum == 1) {
                 file = new File("src//chinesechess//save1.txt");
             } else if (saveNum == 2) {
-                file = new File("src//chinesechess//save1.txt");
+                file = new File("src//chinesechess//save2.txt");
             } else if (saveNum == 3) {
                 file = new File("src//chinesechess//save3.txt");
             } else if (saveNum == 4) {
