@@ -72,5 +72,35 @@ public class ChineseChess {
     public boolean checkHorseMove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void save(int saveNum) {
+        String gameChess = "";
+        for (int row = 0; row < 9; row++) {
+            for (int column = 0; column < 10; column++) {
+                gameChess += chessBoard[row][column] + "\n";
+            }
+        }
+        File file;
+        try {
+            if (saveNum == 1) {
+                file = new File("src//load//save1.txt");
+            } else if (saveNum == 2) {
+                file = new File("src//load//save1.txt");
+            } else if (saveNum == 3) {
+                file = new File("src//load//save3.txt");
+            } else if (saveNum == 4) {
+                file = new File("src//load//save4.txt");
+            } else {
+                file = new File("src//load//save5.txt");
+            }
+            PrintWriter fw = new PrintWriter(file);
+            fw.write(gameChess);
+            fw.flush();
+            fw.close();
+
+        } catch (IOException ex) {
+            System.out.println("Error" + ex);
+        }
+    }
 
 }
