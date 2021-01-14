@@ -37,7 +37,7 @@ public class ChineseChess {
                 newYPos = blackChess[chessNum].getYPos();
             }
             
-            chessBoard[oriXPos+1][oriYPos] = 0;
+            chessBoard[oriXPos+1][oriYPos+1] = 0;
             
             if (chessBoard[newXPos+1][newYPos+1] != 0) {
                 recordEat();
