@@ -30,5 +30,10 @@
             },0, 1000);
             
         }
-        return false;
+        
+        if(limit == 0) {
+            return false;
+        } else {
+            
+        }
     }
