@@ -15,4 +15,12 @@ public abstract class Chess {
         this.yPos = yPos;
         this.red = red;
     }
+    
+    public int getXPos() {
+        return xPos;
+    }
+
+    public int getYPos() {
+        return yPos;
+    }
 }
