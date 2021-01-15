@@ -119,5 +119,47 @@ public class ChineseChess {
             System.out.println("Error" + ex);
         }
     }
+        
+    public int checkWinner(boolean roundRed) {
+        boolean redKing, blackKing;
+        redKing = false;
+        blackKing = false;
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (chessBoard[i][j] == 1) {
+                    redKing = true;
+                } else if (chessBoard[i][j] == -1) {
+                    blackKing = true;
+                }
+            }
+        }
+
+        if (!redKing) {
+            return -1;//black wins
+        } else if (!blackKing) {
+            return 1;//red wins
+        }
+
+        boolean kingMeets = false;
+
+        int redKingPos = redChess[0].getYPos();
+        int blackKingPos = blackChess[0].getYPos();
+        
+        if (redKingPos == blackKingPos) {
+            for (int i = 0; i < 10; i++) {
+                if (chessBoard[redKingPos - 1][i] != 0) {
+                    return 0;
+                } 
+                if (roundRed){
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        }
+
+        return 0;
+    }
 
 }
