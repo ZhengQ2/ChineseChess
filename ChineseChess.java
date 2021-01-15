@@ -120,6 +120,113 @@ public class ChineseChess {
             System.out.println("Error" + ex);
         }
     }
+    
+        public void load(int loadNum) {
+        String sChess;
+        boolean eof = false;
+
+        try {
+            FileReader fr;
+            if (loadNum == 1) {
+                fr = new FileReader("src//load//save1.txt");
+            } else if (loadNum == 2) {
+                fr = new FileReader("src//load//save2.txt");
+            } else if (loadNum == 3) {
+                fr = new FileReader("src//load//save3.txt");
+            } else if (loadNum == 4) {
+                fr = new FileReader("src//load//save4.txt");
+            } else {
+                fr = new FileReader("src//load//save5.txt");
+            }
+            BufferedReader br = new BufferedReader(fr);
+
+            while (!eof) {
+                for (int row = 0; row < 9; row++) {
+                    for (int column = 0; column < 10; column++) {
+                        sChess = br.readLine();
+                        chessBoard[row][column] = Integer.parseInt(sChess);
+                        if (chessBoard[row][column] < 0) {
+                            if (false) {//black
+                                if (chessBoard[row][column] == -1) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -2)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -3)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -4)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -5)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -6)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -7)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -8)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -9)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new General(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -10)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -11)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -12)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -13)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -14)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -15)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                } else if ((chessBoard[row][column] == -16)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                }
+                            }
+                        } else if (chessBoard[row][column] > 0) {
+                            if (true) {//red
+                                if (chessBoard[row][column] == 1) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 2)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 3)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 4)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 5)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 6)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 7)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 8)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 9)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new General(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 10)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 11)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 12)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 13)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 14)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 15)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                } else if ((chessBoard[row][column] == 16)) {
+                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            fr.close();
+            br.close();
+        } catch (IOException ex) {
+            System.out.println("Error" + ex);
+        }
+    }
         
     public int checkWinner(boolean roundRed) {
         boolean redKing, blackKing;
