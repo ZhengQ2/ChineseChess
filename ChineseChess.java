@@ -88,8 +88,34 @@ public class ChineseChess {
         return returnVal;
     }
 
-    public boolean checkHorseMove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkHorseMove(int xMove, int yMove, int chessNum, boolean red) {
+
+        int xPos, yPos;
+        if (red) {
+            xPos = redChess[chessNum].getXPos();
+            yPos = redChess[chessNum].getYPos();
+        } else {
+            xPos = blackChess[chessNum].getXPos();
+            yPos = blackChess[chessNum].getYPos();
+        }
+        if (xMove == 2) {
+            if (chessBoard[xPos + 1][yPos] != 0) {
+                return false;
+            }
+        } else if (xMove == -2) {
+            if (chessBoard[xPos - 1][yPos] != 0) {
+                return false;
+            }
+        } else if (yMove == 2) {
+            if (chessBoard[xPos][yPos + 1] != 0) {
+                return false;
+            }
+        } else if (yMove == -2) {
+            if (chessBoard[xPos][yPos - 2] != 0) {
+                return false;
+            }
+        }
+        return true;
     }
     
     private boolean checkCanonEat() {
