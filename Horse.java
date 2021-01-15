@@ -13,7 +13,7 @@ public class Horse extends Chess {
 
     public boolean move(int yMove, int xMove, boolean canMove) {
 
-        if (((Math.abs(yMove) == 2 && Math.abs(xMove) == 1) || (Math.abs(yMove) == 1 && Math.abs(xMove) == 2)) && canMove && (yPos + yMove) >= 1 && (yPos + yMove) <= 10) {
+        if (((Math.abs(yMove) == 2 && Math.abs(xMove) == 1) || (Math.abs(yMove) == 1 && Math.abs(xMove) == 2)) && canMove && (yPos + yMove) >= 1 && (yPos + yMove) <= 10 && (xPos + xMove) >= 1 && (xPos + xMove) <= 9 ){
             xPos += xMove;
             yPos += yMove;
             canMove = true;
