@@ -58,7 +58,6 @@ public class ChineseChess {
                 chessBoard[i][j] = 0;
             }
         }
-
         chessBoard[0][0] = 1;
         chessBoard[8][0] = 2;
         chessBoard[1][0] = 3;
@@ -76,22 +75,22 @@ public class ChineseChess {
         chessBoard[6][3] = 15;
         chessBoard[8][3] = 16;
 
-        chessBoard[0][9] = 1;
-        chessBoard[8][9] = 2;
-        chessBoard[1][9] = 3;
-        chessBoard[7][9] = 4;
-        chessBoard[2][9] = 5;
-        chessBoard[6][9] = 6;
-        chessBoard[3][9] = 7;
-        chessBoard[5][9] = 8;
-        chessBoard[4][9] = 9;
-        chessBoard[1][8] = 10;
-        chessBoard[7][8] = 11;
-        chessBoard[0][7] = 12;
-        chessBoard[2][7] = 13;
-        chessBoard[4][7] = 14;
-        chessBoard[6][7] = 15;
-        chessBoard[8][7] = 16;
+        chessBoard[0][9] = -1;
+        chessBoard[8][9] = -2;
+        chessBoard[1][9] = -3;
+        chessBoard[7][9] = -4;
+        chessBoard[2][9] = -5;
+        chessBoard[6][9] = -6;
+        chessBoard[3][9] = -7;
+        chessBoard[5][9] = -8;
+        chessBoard[4][9] = -9;
+        chessBoard[1][8] = -10;
+        chessBoard[7][8] = -11;
+        chessBoard[0][7] = -12;
+        chessBoard[2][7] = -13;
+        chessBoard[4][7] = -14;
+        chessBoard[6][7] = -15;
+        chessBoard[8][7] = -16;
     }
 
     public void pushButtons(int chessRule, boolean red, int chessNum, int xPosMove, int yPosMove) {
