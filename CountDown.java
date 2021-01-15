@@ -1,14 +1,34 @@
-    class countDown {
-        private int limitSec;
-        public countDown(int limitSec) throws InterruptedException{
-            this.limitSec = limitSec;
-            System.out.println("Count from "+limitSec);
-            while(limitSec > 0){
-                System.out.println("remians "+ --limitSec +" s");
-                TimeUnit.SECONDS.sleep(1);
-            }
-            System.out.println("Time is out");
+    public static boolean countDown(boolean red) {
+        if(red) {
+            Timer timer = new Timer();
+            
+            timer.scheduleAtFixedRate(new TimerTask() {
+                
+                public void run() {
+                    limit --;
+                    System.out.println(limit);
+                    if(limit == 0) {
+                        timer.cancel();
+                    }
+                }
+               
+            },0, 1000);
+            
+        } else {
+            Timer timer2 = new Timer();
+            
+            timer2.scheduleAtFixedRate(new TimerTask() {
+                
+                public void run() {
+                    limit --;
+                    System.out.println(limit);
+                    if(limit == 0) {
+                        timer2.cancel();
+                    }
+                }
+               
+            },0, 1000);
+            
         }
-        public static void main(String[] args) throws InterruptedException  {
-            new countDown(60);
+        return false;
     }
