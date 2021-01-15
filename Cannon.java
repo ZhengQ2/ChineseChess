@@ -32,12 +32,4 @@ public class Cannon extends Chess{
 
         return moved;
     }
-
-    public int getXPos() {
-        return xPos;
-    }
-
-    public int getYPos() {
-        return yPos;
-    }
 }
