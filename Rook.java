@@ -12,17 +12,17 @@ public class Rook extends Chess {
     }
 
     public boolean move(int yMove, int xMove) {
-        boolean canMove = false;
+        boolean moved = false;
 
         if (Math.abs(yMove) != 0 && (yPos + yMove) >= 1 && (yPos + yMove) <= 10) {
             yPos += yMove;
-            canMove = true;
+            moved = true;
         } else if (Math.abs(xMove) != 0 && (xPos + xMove) >= 1 && (xPos + xMove) <= 9) {
             yPos += yMove;
-            canMove = true;
+            moved = true;
         }
 
-        return canMove;
+        return moved;
     }
 
     public int getXPos() {
