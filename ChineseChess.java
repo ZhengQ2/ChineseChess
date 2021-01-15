@@ -1,14 +1,16 @@
 package chinesechess;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
 
 public class ChineseChess {
 
     int[][] chessBoard = new int[9][10];
-    Chess[] redChess = new Chess[16];
-    Chess[] blackChess = new Chess[16];
+    Chess[] redChess = new Chess[17];
+    Chess[] blackChess = new Chess[17];
     int redSteps = 0;
     int blackSteps = 0;
 
@@ -68,6 +70,13 @@ public class ChineseChess {
             } else {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
             }
+        } else if (chessRule == 5) {
+            boolean canEat = checkCanonEat();
+            if (red) {
+                returnVal = redChess[chessNum].move(xPosMove, yPosMove, canEat);
+            } else {
+                returnVal = redChess[chessNum].move(xPosMove, yPosMove, canEat);
+            }
         } else {
             if (red) {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove);
@@ -80,6 +89,10 @@ public class ChineseChess {
     }
 
     public boolean checkHorseMove() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private boolean checkCanonEat() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -121,7 +134,8 @@ public class ChineseChess {
         }
     }
     
-        public void load(int loadNum) {
+    //要改！！！！！！！
+    public void load(int loadNum) {
         String sChess;
         boolean eof = false;
 
@@ -148,73 +162,73 @@ public class ChineseChess {
                         if (chessBoard[row][column] < 0) {
                             if (false) {//black
                                 if (chessBoard[row][column] == -1) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, false);
+                                    blackChess[1] = new Rook(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -2)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, false);
+                                    blackChess[2] = new Rook(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -3)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, false);
+                                    blackChess[3] = new Horse(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -4)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, false);
+                                    blackChess[4] = new Horse(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -5)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, false);
+                                    blackChess[5] = new Elephant(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -6)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, false);
+                                    blackChess[6] = new Elephant(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -7)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, false);
+                                    blackChess[7] = new Guard(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -8)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, false);
+                                    blackChess[8] = new Guard(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -9)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new General(row + 1, column + 1, false);
+                                    blackChess[9] = new General(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -10)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, false);
+                                    blackChess[10] = new Cannon(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -11)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, false);
+                                    blackChess[11] = new Cannon(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -12)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                    blackChess[12] = new Pawn(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -13)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                    blackChess[13] = new Pawn(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -14)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                    blackChess[14] = new Pawn(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -15)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                    blackChess[15] = new Pawn(row + 1, column + 1, false);
                                 } else if ((chessBoard[row][column] == -16)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, false);
+                                    blackChess[16] = new Pawn(row + 1, column + 1, false);
                                 }
                             }
                         } else if (chessBoard[row][column] > 0) {
                             if (true) {//red
                                 if (chessBoard[row][column] == 1) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, true);
+                                    blackChess[1] = new Rook(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 2)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Rook(row + 1, column + 1, true);
+                                    blackChess[2] = new Rook(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 3)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, true);
+                                    blackChess[3] = new Horse(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 4)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Horse(row + 1, column + 1, true);
+                                    blackChess[4] = new Horse(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 5)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, true);
+                                    blackChess[5] = new Elephant(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 6)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Elephant(row + 1, column + 1, true);
+                                    blackChess[6] = new Elephant(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 7)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, true);
+                                    blackChess[7] = new Guard(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 8)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Guard(row + 1, column + 1, true);
+                                    blackChess[8] = new Guard(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 9)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new General(row + 1, column + 1, true);
+                                    blackChess[9] = new General(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 10)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, true);
+                                    blackChess[10] = new Cannon(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 11)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Cannon(row + 1, column + 1, true);
+                                    blackChess[11] = new Cannon(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 12)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                    blackChess[12] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 13)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                    blackChess[13] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 14)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                    blackChess[14] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 15)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                    blackChess[15] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 16)) {
-                                    blackChess[Math.abs(chessBoard[row][column])] = new Pawn(row + 1, column + 1, true);
+                                    blackChess[16] = new Pawn(row + 1, column + 1, true);
                                 }
                             }
                         }
@@ -226,7 +240,6 @@ public class ChineseChess {
         } catch (IOException ex) {
             System.out.println("Error" + ex);
         }
-    }
         
     public int checkWinner(boolean roundRed) {
         boolean redKing, blackKing;
