@@ -89,6 +89,7 @@ public class ChineseChess {
         } else {
             return blackSteps;
         }
+    }
         
     public void save(int saveNum) {
         String gameChess = "";
