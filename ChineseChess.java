@@ -12,87 +12,10 @@ public class ChineseChess {
     int[][] chessBoard = new int[9][10];
     Chess[] redChess = new Chess[17];
     Chess[] blackChess = new Chess[17];
-    int redSteps = 0;
-    int blackSteps = 0;
+    static int limit = 60;
 
     public static void main(String[] args) {
         // TODO code application logic here
-    }
-    
-    public void initialSetting() {
-        redChess[1] = new Rook(1, 1, true);
-        redChess[2] = new Rook(9, 1, true);
-        redChess[3] = new Horse(2, 1, true);
-        redChess[4] = new Horse(8, 1, true);
-        redChess[5] = new Elephant(3, 1, true);
-        redChess[6] = new Elephant(7, 1, true);
-        redChess[7] = new Guard(4, 1, true);
-        redChess[8] = new Guard(6, 1, true);
-        redChess[9] = new General(5, 1, true);
-        redChess[10] = new Cannon(2, 3, true);
-        redChess[11] = new Cannon(8, 3, true);
-        redChess[12] = new Pawn(1, 4, true);
-        redChess[13] = new Pawn(3, 4, true);
-        redChess[14] = new Pawn(5, 4, true);
-        redChess[15] = new Pawn(7, 4, true);
-        redChess[16] = new Pawn(9, 4, true);
-
-        blackChess[1] = new Rook(1, 10, true);
-        blackChess[2] = new Rook(9, 10, true);
-        blackChess[3] = new Horse(2, 10, true);
-        blackChess[4] = new Horse(8, 10, true);
-        blackChess[5] = new Elephant(3, 10, true);
-        blackChess[6] = new Elephant(7, 10, true);
-        blackChess[7] = new Guard(4, 10, true);
-        blackChess[8] = new Guard(6, 10, true);
-        blackChess[9] = new General(5, 10, true);
-        blackChess[10] = new Cannon(2, 8, true);
-        blackChess[11] = new Cannon(8, 8, true);
-        blackChess[12] = new Pawn(1, 7, true);
-        blackChess[13] = new Pawn(3, 7, true);
-        blackChess[14] = new Pawn(5, 7, true);
-        blackChess[15] = new Pawn(7, 7, true);
-        blackChess[16] = new Pawn(9, 7, true);
-
-        for (int i = 0; i <= 8; i++) {
-            for (int j = 0; i <= 9; i++) {
-                chessBoard[i][j] = 0;
-            }
-        }
-
-        chessBoard[0][0] = 1;
-        chessBoard[8][0] = 2;
-        chessBoard[1][0] = 3;
-        chessBoard[7][0] = 4;
-        chessBoard[2][0] = 5;
-        chessBoard[6][0] = 6;
-        chessBoard[3][0] = 7;
-        chessBoard[5][0] = 8;
-        chessBoard[4][0] = 9;
-        chessBoard[1][2] = 10;
-        chessBoard[7][2] = 11;
-        chessBoard[0][3] = 12;
-        chessBoard[2][3] = 13;
-        chessBoard[4][3] = 14;
-        chessBoard[6][3] = 15;
-        chessBoard[8][3] = 16;
-
-        chessBoard[0][9] = 1;
-        chessBoard[8][9] = 2;
-        chessBoard[1][9] = 3;
-        chessBoard[7][9] = 4;
-        chessBoard[2][9] = 5;
-        chessBoard[6][9] = 6;
-        chessBoard[3][9] = 7;
-        chessBoard[5][9] = 8;
-        chessBoard[4][9] = 9;
-        chessBoard[1][8] = 10;
-        chessBoard[7][8] = 11;
-        chessBoard[0][7] = 12;
-        chessBoard[2][7] = 13;
-        chessBoard[4][7] = 14;
-        chessBoard[6][7] = 15;
-        chessBoard[8][7] = 16;
     }
 
     public void pushButtons(int chessRule, boolean red, int chessNum, int xPosMove, int yPosMove) {
@@ -117,13 +40,11 @@ public class ChineseChess {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
-                countDown(60) throws InterruptedException; // check
-                redSteps++;
+                countDown(true); 
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
-                countDown(60) throws InterruptedException; // check
-                blackSteps++;
+                countDown(false);
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
@@ -250,6 +171,49 @@ public class ChineseChess {
         }
         return false;
     }
+    
+    public static int countDown(boolean red) {
+        if(red) {
+            Timer timer = new Timer();
+            
+            timer.scheduleAtFixedRate(new TimerTask() {
+                
+                public void run() {
+                    limit --;
+                    System.out.println(limit);
+                    if(limit == 0) {
+                        timer.cancel();
+                    }
+                }
+               
+            },0, 1000);
+            
+        } else {
+            Timer timer2 = new Timer();
+            
+            timer2.scheduleAtFixedRate(new TimerTask() {
+                
+                public void run() {
+                    limit --;
+                    System.out.println(limit);
+                    if(limit == 0) {
+                        timer2.cancel();
+                    }
+                }
+               
+            },0, 1000);
+            
+        }
+        
+        if(limit == 0 && red) {
+            return -1;
+        } else if (limit == 0 && !red) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
 
     public int getSteps(boolean red, int redSteps, int blackSteps) {
         if (red) {
