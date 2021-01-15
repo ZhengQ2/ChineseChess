@@ -6,36 +6,42 @@
 package chinesechess;
 
 public class Pawn extends Chess {
-
-    boolean riverSide;
-
-    public Pawn(int xPos, int yPos, boolean red, boolean riverSide) {
+    public Pawn(int xPos, int yPos, boolean red) {
         super(xPos, yPos, red);
-        this.riverSide = riverSide;
     }
 
     public boolean move(int yMove, int xMove) {
-        boolean canMove = false;
+        boolean moved = false;
+        boolean riverSide = false;
+        if (red) {
+            if (yPos >= 6 && yPos <= 10){
+                riverSide = true;
+            }
+        } else {
+            if (yPos >= 1 && yPos <= 5){
+                riverSide = true;
+            }
+        }
         
         if (red) {
             if (yMove == 1 && (yPos + yMove) >= 1 && (yPos + yMove) <= 10) {
                 yPos += yMove;
-                canMove = true;
+                moved = true;
             } else if (riverSide && (xMove == 1 || xMove == -1) && (xPos + xMove) >= 1 && (xPos + xMove) <= 9) {
                 xPos += yMove;
-                canMove = true;
+                moved = true;
             }
         } else {
             if (yMove == -1 && (yPos + yMove) >= 1 && (yPos + yMove) <= 10) {
                 yPos += yMove;
-                canMove = true;
+                moved = true;
             } else if (riverSide && (xMove == 1 || xMove == -1) && (xPos + xMove) >= 1 && (xPos + xMove) <= 9) {
                 xPos += yMove;
-                canMove = true;
+                moved = true;
             }
         }
         
-        return canMove;
+        return moved;
     }
 
     public int getXPos() {
