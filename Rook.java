@@ -24,12 +24,4 @@ public class Rook extends Chess {
 
         return moved;
     }
-
-    public int getXPos() {
-        return xPos;
-    }
-
-    public int getYPos() {
-        return yPos;
-    }
 }
