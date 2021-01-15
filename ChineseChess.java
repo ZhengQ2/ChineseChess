@@ -41,12 +41,12 @@ public class ChineseChess {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
                 countDown(60) throws InterruptedException; // check
-                redSteps ++;
+                redSteps++;
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
                 countDown(60) throws InterruptedException; // check
-                blackSteps ++;
+                blackSteps++;
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
@@ -64,14 +64,16 @@ public class ChineseChess {
     public boolean move(boolean red, int chessRule, int xPosMove, int yPosMove, int chessNum) {
         boolean returnVal;
         if (chessRule == 3) {
-            boolean canMove = checkHorseMove();
+            boolean canMove = checkHorseMove(xPosMove, yPosMove, chessNum, red);
+
             if (red) {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
             } else {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
             }
         } else if (chessRule == 5) {
-            boolean canEat = checkCanonEat();
+            boolean canEat = checkCannonEat(xPosMove, yPosMove, chessNum, red);
+
             if (red) {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove, canEat);
             } else {
@@ -117,19 +119,69 @@ public class ChineseChess {
         }
         return true;
     }
-    
-    private boolean checkCanonEat() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    public boolean checkCannonEat(int xMove, int yMove, int chessNum, boolean red) {
+        int xPos, yPos;
+        if (red) {
+            xPos = redChess[chessNum].getXPos();
+            yPos = redChess[chessNum].getYPos();
+        } else {
+            xPos = blackChess[chessNum].getXPos();
+            yPos = blackChess[chessNum].getYPos();
+        }
+        int middle = 0;
+        if (xMove == 0) {
+            if (yMove > 0) {
+                for (int i = 1; i < yMove; i++) {
+                    if (chessBoard[xPos - 1][yPos + i - 1] != 0) {
+                        middle++;
+                    }
+                    if (middle == 1) {
+                        return true;
+                    }
+                }
+            } else if (yMove < 0) {
+                for (int i = -1; i > yMove; i--) {
+                    if (chessBoard[xPos - 1][yPos + i - 1] != 0) {
+                        middle++;
+                    }
+                    if (middle == 1) {
+                        return true;
+                    }
+                }
+            }
+        } else {
+            if (xMove > 0) {
+                for (int i = 1; i < xMove; i++) {
+                    if (chessBoard[xPos - 1 + i][yPos - 1] != 0) {
+                        middle++;
+                    }
+                    if (middle == 1) {
+                        return true;
+                    }
+                }
+            } else if (xMove < 0) {
+                for (int i = -1; i > xMove; i--) {
+                    if (chessBoard[xPos - 1 + i][yPos - 1] != 0) {
+                        middle++;
+                    }
+                    if (middle == 1) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
-    
+
     public int getSteps(boolean red, int redSteps, int blackSteps) {
-        if(red) {
+        if (red) {
             return redSteps;
         } else {
             return blackSteps;
         }
     }
-        
+
     public void save(int saveNum) {
         String gameChess = "";
         for (int row = 0; row < 9; row++) {
@@ -159,7 +211,7 @@ public class ChineseChess {
             System.out.println("Error" + ex);
         }
     }
-    
+
     //要改！！！！！！！
     public void load(int loadNum) {
         String sChess;
@@ -267,6 +319,12 @@ public class ChineseChess {
             System.out.println("Error" + ex);
         }
         
+    
+
+    
+
+    
+
     public int checkWinner(boolean roundRed) {
         boolean redKing, blackKing;
         redKing = false;
@@ -292,13 +350,13 @@ public class ChineseChess {
 
         int redKingPos = redChess[0].getYPos();
         int blackKingPos = blackChess[0].getYPos();
-        
+
         if (redKingPos == blackKingPos) {
             for (int i = 0; i < 10; i++) {
                 if (chessBoard[redKingPos - 1][i] != 0) {
                     return 0;
-                } 
-                if (roundRed){
+                }
+                if (roundRed) {
                     return 1;
                 } else {
                     return -1;
