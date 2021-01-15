@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ChineseChess {
@@ -318,12 +319,8 @@ public class ChineseChess {
         } catch (IOException ex) {
             System.out.println("Error" + ex);
         }
-        
-    
+    } 
 
-    
-
-    
 
     public int checkWinner(boolean roundRed) {
         boolean redKing, blackKing;
