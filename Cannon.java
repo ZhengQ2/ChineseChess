@@ -23,7 +23,7 @@ public class Cannon extends Chess{
             yPos += yMove;
             moved = true;
         } else if (Math.abs(xMove) != 0 && (xPos + xMove) >= 1 && (xPos + xMove) <= 9) {
-            yPos += yMove;
+            xPos += xMove;
             moved = true;
         }
 
