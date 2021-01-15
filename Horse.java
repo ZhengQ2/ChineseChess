@@ -21,12 +21,4 @@ public class Horse extends Chess {
 
         return canMove;
     }
-
-    public int getXPos() {
-        return xPos;
-    }
-
-    public int getYPos() {
-        return yPos;
-    }
 }
