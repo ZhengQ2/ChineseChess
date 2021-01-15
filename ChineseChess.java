@@ -9,6 +9,8 @@ public class ChineseChess {
     int[][] chessBoard = new int[9][10];
     Chess[] redChess = new Chess[16];
     Chess[] blackChess = new Chess[16];
+    int redSteps = 0;
+    int blackSteps = 0;
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -36,11 +38,13 @@ public class ChineseChess {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
-                countDown();
+                countDown(60) throws InterruptedException; // check
+                redSteps ++;
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
-                countDown(); 
+                countDown(60) throws InterruptedException; // check
+                blackSteps ++;
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
@@ -79,6 +83,13 @@ public class ChineseChess {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public int getSteps(boolean red, int redSteps, int blackSteps) {
+        if(red) {
+            return redSteps;
+        } else {
+            return blackSteps;
+        }
+        
     public void save(int saveNum) {
         String gameChess = "";
         for (int row = 0; row < 9; row++) {
