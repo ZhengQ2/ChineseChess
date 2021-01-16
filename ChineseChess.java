@@ -142,7 +142,7 @@ public class ChineseChess {
             if (red) {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
             } else {
-                returnVal = redChess[chessNum].move(xPosMove, yPosMove, canMove);
+                returnVal = blackChess[chessNum].move(xPosMove, yPosMove, canMove);
             }
         } else if (chessRule == 5) {
             boolean canEat = checkCannonEat(xPosMove, yPosMove, chessNum, red);
@@ -150,13 +150,13 @@ public class ChineseChess {
             if (red) {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove, canEat);
             } else {
-                returnVal = redChess[chessNum].move(xPosMove, yPosMove, canEat);
+                returnVal = blackChess[chessNum].move(xPosMove, yPosMove, canEat);
             }
         } else {
             if (red) {
                 returnVal = redChess[chessNum].move(xPosMove, yPosMove);
             } else {
-                returnVal = redChess[chessNum].move(xPosMove, yPosMove);
+                returnVal = blackChess[chessNum].move(xPosMove, yPosMove);
             }
 
         }
