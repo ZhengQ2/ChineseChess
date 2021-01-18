@@ -101,9 +101,10 @@ public class ChineseChess {
 
     public void pushButtons(int chessRule, boolean red, int chessNum, int xPosMove, int yPosMove) {
         //Chess Rule:
-        //1 - Pawns; 2 - Elephants; 3 - Horses; 4 - Rooks; 5 - Canons; 6 - guards; 7 - kings
+        //1 - Pawns; 2 - Elephants; 3 - Horses; 4 - Rooks; 5 - Cannons; 6 - guards; 7 - kings
         boolean move;
         int oriXPos, oriYPos;
+        int newXPos, newYPos;
 
         if (red) {
             oriXPos = redChess[chessNum].getXPos();
@@ -113,31 +114,43 @@ public class ChineseChess {
             oriYPos = blackChess[chessNum].getYPos();
         }
 
-        move = move(red, chessRule, xPosMove, yPosMove, chessNum);
+        newXPos = oriXPos + xPosMove;
+        newYPos = oriYPos + yPosMove;
 
-        int newXPos, newYPos;
+        if (red) {
+            if (chessBoard[newXPos + 1][newYPos + 1] > 0) {
+                return;
+            } else {
+                chessBoard[newXPos + 1][newYPos + 1] = chessNum;
+            }
+        } else {
+            if (chessBoard[newXPos + 1][newYPos + 1] < 0) {
+                return;
+            } else {
+                chessBoard[newXPos + 1][newYPos + 1] = -chessNum;
+            }
+        }
+
+        move = move(red, chessRule, xPosMove, yPosMove, chessNum);
 
         if (move) {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
-                chessBoard[newXPos + 1][newYPos + 1] = chessNum;
                 redSteps++;
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
-                chessBoard[newXPos + 1][newYPos + 1] = -chessNum;
                 blackSteps++;
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
 
-            chessBoard[newXPos + 1][newYPos + 1] = 0;
             int winner = checkWinner(red);
             if (winner == 1) {
                 JOptionPane.showMessageDialog(null, "Red Wins!");
             } else if (winner == -1) {
-                JOptionPane.showMessageDialog(null, "Red Wins!");
+                JOptionPane.showMessageDialog(null, "Black Wins!");
             }
 
         }
