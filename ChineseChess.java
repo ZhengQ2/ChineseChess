@@ -120,12 +120,10 @@ public class ChineseChess {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
-                countDown(60) throws InterruptedException; // check
                 redSteps++;
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
-                countDown(60) throws InterruptedException; // check
                 blackSteps++;
             }
 
@@ -259,7 +257,7 @@ public class ChineseChess {
         return false;
     }
 
-    public static int countDown(boolean red) {
+    public static boolean countDown(boolean red) {
         if (red) {
             Timer timer = new Timer();
 
@@ -293,9 +291,9 @@ public class ChineseChess {
         }
 
         if (limit == 0 && red) {
-            return -1;
+            return true;
         } else if (limit == 0 && !red) {
-            return 1;
+            return false;
         } else {
             return 0;
         }
@@ -484,7 +482,13 @@ public class ChineseChess {
                 }
             }
         }
-
+        if(countDown(roundRed) == false) {
+            return 1;
+        } else if(countDown(roundBlack) == true) {
+            return -1;
+        } else {
+            return 0;
+        }
         return 0;
     }
 
