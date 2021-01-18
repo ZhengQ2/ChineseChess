@@ -13,6 +13,8 @@ public class ChineseChess {
     Chess[] redChess = new Chess[17];
     Chess[] blackChess = new Chess[17];
     static int limit = 60;
+    int redSteps = 0;
+    int blackSteps = 0;
 
     public static void main(String[] args) {
         // TODO code application logic here
