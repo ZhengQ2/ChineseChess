@@ -1,0 +1,24 @@
+package chessgui.pieces;
+
+import chessgui.Board;
+
+public class Cannon extends Piece {
+
+    public Cannon(int x, int y, boolean is_white, String file_path, Board board)
+    {
+        super(x,y,is_white,file_path, board);
+    }
+    
+    @Override
+    public boolean canMove(int destination_x, int destination_y)
+    {
+        // Remember: A Cannon can move as many squares as she wants forward, 
+        // backward, sideways, or diagonally, without jumping over any pieces.
+        // She cannot attack her own pieces.
+        
+                // WRITE CODE HERE
+
+        
+        return true;
+    }
+}
