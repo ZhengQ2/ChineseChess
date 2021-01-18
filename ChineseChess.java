@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
 
 public class ChineseChess {
 
@@ -134,16 +135,15 @@ public class ChineseChess {
             chessBoard[newXPos + 1][newYPos + 1] = 0;
             int winner = checkWinner(red);
             if (winner == 1) {
-                JOptionPane.showMessageDialog(null,"Red Wins!");
+                JOptionPane.showMessageDialog(null, "Red Wins!");
             } else if (winner == -1) {
-                JOptionPane.showMessageDialog(null,"Red Wins!");
+                JOptionPane.showMessageDialog(null, "Red Wins!");
             }
 
         }
 
     }
-    
-    
+
     public boolean move(boolean red, int chessRule, int xPosMove, int yPosMove, int chessNum) {
         boolean returnVal;
         if (chessRule == 3) {
@@ -257,7 +257,7 @@ public class ChineseChess {
         return false;
     }
 
-    public static boolean countDown(boolean red) {
+    public static int countDown(boolean red) {
         if (red) {
             Timer timer = new Timer();
 
@@ -291,9 +291,9 @@ public class ChineseChess {
         }
 
         if (limit == 0 && red) {
-            return true;
+            return 1;
         } else if (limit == 0 && !red) {
-            return false;
+            return -1;
         } else {
             return 0;
         }
@@ -482,12 +482,10 @@ public class ChineseChess {
                 }
             }
         }
-        if(countDown(roundRed) == false) {
+        if (countDown(roundRed) == 1) {
             return 1;
-        } else if(countDown(roundBlack) == true) {
+        } else if (countDown(roundRed) == -1) {
             return -1;
-        } else {
-            return 0;
         }
         return 0;
     }
