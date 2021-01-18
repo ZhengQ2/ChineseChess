@@ -490,8 +490,4 @@ public class ChineseChess {
         return 0;
     }
 
-    private void recordEat() {
-
-    }
-
 }
