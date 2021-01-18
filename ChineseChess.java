@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChineseChess {
 
@@ -19,7 +21,7 @@ public class ChineseChess {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
     public void initialSetting() {
         redChess[1] = new Rook(1, 1, true);
         redChess[2] = new Rook(9, 1, true);
@@ -60,6 +62,7 @@ public class ChineseChess {
                 chessBoard[i][j] = 0;
             }
         }
+
         chessBoard[0][0] = 1;
         chessBoard[8][0] = 2;
         chessBoard[1][0] = 3;
@@ -117,11 +120,13 @@ public class ChineseChess {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
-                countDown(true); 
+                countDown(60) throws InterruptedException; // check
+                redSteps++;
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
-                countDown(false);
+                countDown(60) throws InterruptedException; // check
+                blackSteps++;
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
@@ -130,7 +135,12 @@ public class ChineseChess {
                 recordEat();
             }
 
-            checkWinner();
+            int winner = checkWinner(red);
+            if (winner == 1) {
+                //red wins
+            } else if (winner == -1) {
+                //black wins
+            }
 
         }
 
@@ -248,41 +258,41 @@ public class ChineseChess {
         }
         return false;
     }
-    
+
     public static int countDown(boolean red) {
-        if(red) {
+        if (red) {
             Timer timer = new Timer();
-            
+
             timer.scheduleAtFixedRate(new TimerTask() {
-                
+
                 public void run() {
-                    limit --;
+                    limit--;
                     System.out.println(limit);
-                    if(limit == 0) {
+                    if (limit == 0) {
                         timer.cancel();
                     }
                 }
-               
-            },0, 1000);
-            
+
+            }, 0, 1000);
+
         } else {
             Timer timer2 = new Timer();
-            
+
             timer2.scheduleAtFixedRate(new TimerTask() {
-                
+
                 public void run() {
-                    limit --;
+                    limit--;
                     System.out.println(limit);
-                    if(limit == 0) {
+                    if (limit == 0) {
                         timer2.cancel();
                     }
                 }
-               
-            },0, 1000);
-            
+
+            }, 0, 1000);
+
         }
-        
-        if(limit == 0 && red) {
+
+        if (limit == 0 && red) {
             return -1;
         } else if (limit == 0 && !red) {
             return 1;
@@ -290,7 +300,6 @@ public class ChineseChess {
             return 0;
         }
     }
-
 
     public int getSteps(boolean red, int redSteps, int blackSteps) {
         if (red) {
@@ -330,7 +339,6 @@ public class ChineseChess {
         }
     }
 
-    //要改！！！！！！！
     public void load(int loadNum) {
         String sChess;
         boolean eof = false;
@@ -394,37 +402,37 @@ public class ChineseChess {
                         } else if (chessBoard[row][column] > 0) {
                             if (true) {//red
                                 if (chessBoard[row][column] == 1) {
-                                    blackChess[1] = new Rook(row + 1, column + 1, true);
+                                    redChess[1] = new Rook(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 2)) {
-                                    blackChess[2] = new Rook(row + 1, column + 1, true);
+                                    redChess[2] = new Rook(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 3)) {
-                                    blackChess[3] = new Horse(row + 1, column + 1, true);
+                                    redChess[3] = new Horse(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 4)) {
-                                    blackChess[4] = new Horse(row + 1, column + 1, true);
+                                    redChess[4] = new Horse(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 5)) {
-                                    blackChess[5] = new Elephant(row + 1, column + 1, true);
+                                    redChess[5] = new Elephant(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 6)) {
-                                    blackChess[6] = new Elephant(row + 1, column + 1, true);
+                                    redChess[6] = new Elephant(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 7)) {
-                                    blackChess[7] = new Guard(row + 1, column + 1, true);
+                                    redChess[7] = new Guard(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 8)) {
-                                    blackChess[8] = new Guard(row + 1, column + 1, true);
+                                    redChess[8] = new Guard(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 9)) {
-                                    blackChess[9] = new General(row + 1, column + 1, true);
+                                    redChess[9] = new General(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 10)) {
-                                    blackChess[10] = new Cannon(row + 1, column + 1, true);
+                                    redChess[10] = new Cannon(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 11)) {
-                                    blackChess[11] = new Cannon(row + 1, column + 1, true);
+                                    redChess[11] = new Cannon(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 12)) {
-                                    blackChess[12] = new Pawn(row + 1, column + 1, true);
+                                    redChess[12] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 13)) {
-                                    blackChess[13] = new Pawn(row + 1, column + 1, true);
+                                    redChess[13] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 14)) {
-                                    blackChess[14] = new Pawn(row + 1, column + 1, true);
+                                    redChess[14] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 15)) {
-                                    blackChess[15] = new Pawn(row + 1, column + 1, true);
+                                    redChess[15] = new Pawn(row + 1, column + 1, true);
                                 } else if ((chessBoard[row][column] == 16)) {
-                                    blackChess[16] = new Pawn(row + 1, column + 1, true);
+                                    redChess[16] = new Pawn(row + 1, column + 1, true);
                                 }
                             }
                         }
@@ -436,8 +444,7 @@ public class ChineseChess {
         } catch (IOException ex) {
             System.out.println("Error" + ex);
         }
-    } 
-
+    }
 
     public int checkWinner(boolean roundRed) {
         boolean redKing, blackKing;
@@ -479,6 +486,10 @@ public class ChineseChess {
         }
 
         return 0;
+    }
+
+    private void recordEat() {
+
     }
 
 }
