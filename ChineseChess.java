@@ -120,30 +120,30 @@ public class ChineseChess {
             if (red) {
                 newXPos = redChess[chessNum].getXPos();
                 newYPos = redChess[chessNum].getYPos();
+                chessBoard[newXPos + 1][newYPos + 1] = chessNum;
                 redSteps++;
             } else {
                 newXPos = blackChess[chessNum].getXPos();
                 newYPos = blackChess[chessNum].getYPos();
+                chessBoard[newXPos + 1][newYPos + 1] = -chessNum;
                 blackSteps++;
             }
 
             chessBoard[oriXPos + 1][oriYPos + 1] = 0;
 
-            if (chessBoard[newXPos + 1][newYPos + 1] != 0) {
-                recordEat();
-            }
-
+            chessBoard[newXPos + 1][newYPos + 1] = 0;
             int winner = checkWinner(red);
             if (winner == 1) {
-                //red wins
+                JOptionPane.showMessageDialog(null,"Red Wins!");
             } else if (winner == -1) {
-                //black wins
+                JOptionPane.showMessageDialog(null,"Red Wins!");
             }
 
         }
 
     }
-
+    
+    
     public boolean move(boolean red, int chessRule, int xPosMove, int yPosMove, int chessNum) {
         boolean returnVal;
         if (chessRule == 3) {
