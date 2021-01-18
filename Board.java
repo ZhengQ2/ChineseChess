@@ -17,9 +17,9 @@ public class Board extends JComponent {
     public int turnCounter = 0;
     private static Image NULL_IMAGE = new BufferedImage(10, 10, BufferedImage.TYPE_INT_ARGB);
 
-    private final int Square_Width = 65;
-    public ArrayList<Piece> White_Pieces;
-    public ArrayList<Piece> Black_Pieces;
+    private final int Square_Width = 77;
+    public ArrayList<Piece> Red_Pieces;
+    public ArrayList<Piece> Blue_Pieces;
     
 
     public ArrayList<DrawingShape> Static_Shapes;
@@ -27,10 +27,10 @@ public class Board extends JComponent {
 
     public Piece Active_Piece;
 
-    private final int rows = 8;
-    private final int cols = 8;
+    private final int rows = 9;
+    private final int cols = 10;
     private Integer[][] BoardGrid;
-    private String board_file_path = "images" + File.separator + "board.png";
+    private String board_file_path = "images" + File.separator + "chessBoard.png";
     private String active_square_file_path = "images" + File.separator + "active_square.png";
 
     public void initGrid()
@@ -46,39 +46,41 @@ public class Board extends JComponent {
         //Image white_piece = loadImage("images/white_pieces/" + piece_name + ".png");
         //Image black_piece = loadImage("images/black_pieces/" + piece_name + ".png");  
 
-        White_Pieces.add(new King(3,0,true,"King.png",this));
-        White_Pieces.add(new Queen(4,0,true,"Queen.png",this));
-        White_Pieces.add(new Bishop(2,0,true,"Bishop.png",this));
-        White_Pieces.add(new Bishop(5,0,true,"Bishop.png",this));
-        White_Pieces.add(new Knight(1,0,true,"Knight.png",this));
-        White_Pieces.add(new Knight(6,0,true,"Knight.png",this));
-        White_Pieces.add(new Rook(0,0,true,"Rook.png",this));
-        White_Pieces.add(new Rook(7,0,true,"Rook.png",this));
-        White_Pieces.add(new Pawn(0,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(1,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(2,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(3,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(4,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(5,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(6,1,true,"Pawn.png",this));
-        White_Pieces.add(new Pawn(7,1,true,"Pawn.png",this));
+        Red_Pieces.add(new General(4,0,true,"General.png",this));
+        Red_Pieces.add(new Guard(3,0,true,"Guard.png",this));
+        Red_Pieces.add(new Guard(5,0,true,"Guard.png",this));
+        Red_Pieces.add(new Elephant(2,0,true,"Elephant.png",this));
+        Red_Pieces.add(new Elephant(6,0,true,"Elephant.png",this));
+        Red_Pieces.add(new Horse(1,0,true,"Horse.png",this));
+        Red_Pieces.add(new Horse(7,0,true,"Horse.png",this));
+        Red_Pieces.add(new Rook(0,0,true,"Rook.png",this));
+        Red_Pieces.add(new Rook(8,0,true,"Rook.png",this));
+        Red_Pieces.add(new Cannon(1,2,true,"Cannon.png",this));
+        Red_Pieces.add(new Cannon(7,2,true,"Cannon.png",this));
+        Red_Pieces.add(new Pawn(0,3,true,"Pawn.png",this));
+        Red_Pieces.add(new Pawn(2,3,true,"Pawn.png",this));
+        Red_Pieces.add(new Pawn(4,3,true,"Pawn.png",this));
+        Red_Pieces.add(new Pawn(6,3,true,"Pawn.png",this));
+        Red_Pieces.add(new Pawn(8,3,true,"Pawn.png",this));
+        
 
-        Black_Pieces.add(new King(3,7,false,"King.png",this));
-        Black_Pieces.add(new Queen(4,7,false,"Queen.png",this));
-        Black_Pieces.add(new Bishop(2,7,false,"Bishop.png",this));
-        Black_Pieces.add(new Bishop(5,7,false,"Bishop.png",this));
-        Black_Pieces.add(new Knight(1,7,false,"Knight.png",this));
-        Black_Pieces.add(new Knight(6,7,false,"Knight.png",this));
-        Black_Pieces.add(new Rook(0,7,false,"Rook.png",this));
-        Black_Pieces.add(new Rook(7,7,false,"Rook.png",this));
-        Black_Pieces.add(new Pawn(0,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(1,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(2,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(3,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(4,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(5,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(6,6,false,"Pawn.png",this));
-        Black_Pieces.add(new Pawn(7,6,false,"Pawn.png",this));
+        Blue_Pieces.add(new General(4,9,false,"General.png",this));
+        Blue_Pieces.add(new Guard(3,9,false,"Guard.png",this));
+        Blue_Pieces.add(new Guard(5,9,false,"Guard.png",this));
+        Blue_Pieces.add(new Elephant(2,9,false,"Elephant.png",this));
+        Blue_Pieces.add(new Elephant(6,9,false,"Elephant.png",this));
+        Blue_Pieces.add(new Horse(1,9,false,"Horse.png",this));
+        Blue_Pieces.add(new Horse(7,9,false,"Horse.png",this));
+        Blue_Pieces.add(new Rook(0,9,false,"Rook.png",this));
+        Blue_Pieces.add(new Rook(8,9,false,"Rook.png",this));
+        Blue_Pieces.add(new Cannon(1,7,false,"Cannon.png",this));
+        Blue_Pieces.add(new Cannon(7,7,false,"Cannon.png",this));
+        Blue_Pieces.add(new Pawn(0,6,false,"Pawn.png",this));
+        Blue_Pieces.add(new Pawn(2,6,false,"Pawn.png",this));
+        Blue_Pieces.add(new Pawn(4,6,false,"Pawn.png",this));
+        Blue_Pieces.add(new Pawn(6,6,false,"Pawn.png",this));
+        Blue_Pieces.add(new Pawn(8,6,false,"Pawn.png",this));
+
 
     }
 
@@ -87,13 +89,13 @@ public class Board extends JComponent {
         BoardGrid = new Integer[rows][cols];
         Static_Shapes = new ArrayList();
         Piece_Graphics = new ArrayList();
-        White_Pieces = new ArrayList();
-        Black_Pieces = new ArrayList();
+        Red_Pieces = new ArrayList();
+        Blue_Pieces = new ArrayList();
 
         initGrid();
 
         this.setBackground(new Color(37,13,84));
-        this.setPreferredSize(new Dimension(520, 520));
+        this.setPreferredSize(new Dimension(850, 790));
         this.setMinimumSize(new Dimension(100, 100));
         this.setMaximumSize(new Dimension(1000, 1000));
 
@@ -120,35 +122,35 @@ public class Board extends JComponent {
         if (Active_Piece != null)
         {
             Image active_square = loadImage("images" + File.separator + "active_square.png");
-            Static_Shapes.add(new DrawingImage(active_square, new Rectangle2D.Double(Square_Width*Active_Piece.getX(),Square_Width*Active_Piece.getY(), active_square.getWidth(null), active_square.getHeight(null))));
+            Static_Shapes.add(new DrawingImage(active_square, new Rectangle2D.Double((17 +Square_Width*Active_Piece.getX()),(10 + Square_Width*Active_Piece.getY()), active_square.getWidth(null), active_square.getHeight(null))));
         }
-        for (int i = 0; i < White_Pieces.size(); i++)
+        for (int i = 0; i < Red_Pieces.size(); i++)
         {
-            int COL = White_Pieces.get(i).getX();
-            int ROW = White_Pieces.get(i).getY();
-            Image piece = loadImage("images" + File.separator + "white_pieces" + File.separator + White_Pieces.get(i).getFilePath());  
-            Piece_Graphics.add(new DrawingImage(piece, new Rectangle2D.Double(Square_Width*COL,Square_Width*ROW, piece.getWidth(null), piece.getHeight(null))));
+            int COL = Red_Pieces.get(i).getX();
+            int ROW = Red_Pieces.get(i).getY();
+            Image piece = loadImage("images" + File.separator + "white_pieces" + File.separator + Red_Pieces.get(i).getFilePath());  
+            Piece_Graphics.add(new DrawingImage(piece, new Rectangle2D.Double((17 + Square_Width*COL),(10 + Square_Width*ROW), piece.getWidth(null), piece.getHeight(null))));
         }
-        for (int i = 0; i < Black_Pieces.size(); i++)
+        for (int i = 0; i < Blue_Pieces.size(); i++)
         {
-            int COL = Black_Pieces.get(i).getX();
-            int ROW = Black_Pieces.get(i).getY();
-            Image piece = loadImage("images" + File.separator + "black_pieces" + File.separator + Black_Pieces.get(i).getFilePath());  
-            Piece_Graphics.add(new DrawingImage(piece, new Rectangle2D.Double(Square_Width*COL,Square_Width*ROW, piece.getWidth(null), piece.getHeight(null))));
+            int COL = Blue_Pieces.get(i).getX();
+            int ROW = Blue_Pieces.get(i).getY();
+            Image piece = loadImage("images" + File.separator + "black_pieces" + File.separator + Blue_Pieces.get(i).getFilePath());  
+            Piece_Graphics.add(new DrawingImage(piece, new Rectangle2D.Double((17 + Square_Width*COL),(10 + Square_Width*ROW), piece.getWidth(null), piece.getHeight(null))));
         }
         this.repaint();
     }
 
     
     public Piece getPiece(int x, int y) {
-        for (Piece p : White_Pieces)
+        for (Piece p : Red_Pieces)
         {
             if (p.getX() == x && p.getY() == y)
             {
                 return p;
             }
         }
-        for (Piece p : Black_Pieces)
+        for (Piece p : Blue_Pieces)
         {
             if (p.getX() == x && p.getY() == y)
             {
@@ -197,11 +199,11 @@ public class Board extends JComponent {
                 {
                     if (clicked_piece.isWhite())
                     {
-                        White_Pieces.remove(clicked_piece);
+                        Red_Pieces.remove(clicked_piece);
                     }
                     else
                     {
-                        Black_Pieces.remove(clicked_piece);
+                        Blue_Pieces.remove(clicked_piece);
                     }
                 }
                 // do move
