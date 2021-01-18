@@ -11,16 +11,17 @@ public class Guard extends Chess {
         super(xPos, yPos, red);
     }
 
-    public boolean move(int yMove, int xMove, boolean canMove) {
-
+    public boolean move(int yMove, int xMove) {
+        boolean canMove = false;
+        
         if (red) {
-            if (((Math.abs(yMove) == 1 && Math.abs(xMove) == 1)) && canMove && (yPos + yMove) >= 1 && (yPos + yMove) <= 3 && (xPos + xMove) >= 4 && (xPos + xMove) <= 6) {
+            if (((Math.abs(yMove) == 1 && Math.abs(xMove) == 1)) && (yPos + yMove) >= 1 && (yPos + yMove) <= 3 && (xPos + xMove) >= 4 && (xPos + xMove) <= 6) {
                 xPos += xMove;
                 yPos += yMove;
                 canMove = true;
             }
         } else {
-            if (((Math.abs(yMove) == 1 && Math.abs(xMove) == 1)) && canMove && (yPos + yMove) >= 8 && (yPos + yMove) <= 10 && (xPos + xMove) >= 4 && (xPos + xMove) <= 6) {
+            if (((Math.abs(yMove) == 1 && Math.abs(xMove) == 1)) && (yPos + yMove) >= 8 && (yPos + yMove) <= 10 && (xPos + xMove) >= 4 && (xPos + xMove) <= 6) {
                 xPos += xMove;
                 yPos += yMove;
                 canMove = true;
