@@ -5,8 +5,10 @@
      * @return an integer for determaining the loser
      */
     public static int countDown(boolean red) {
+        limit = 60; //set the timer back to 60s
+        
         if (red) {
-            Timer timer = new Timer(); //create a timer for red team
+            Timer timer = new Timer(); //declear a timer for red team
 
             timer.scheduleAtFixedRate(new TimerTask() {
 
@@ -21,7 +23,7 @@
             }, 0, 1000); //start 0 seconds later, repeat once per second
 
         } else {
-            Timer timer2 = new Timer(); //create a timer for black team
+            Timer timer2 = new Timer(); //declear a timer for black team
 
             timer2.scheduleAtFixedRate(new TimerTask() {
 
